@@ -59,7 +59,7 @@ def main():
     hashpass = bcrypt.hashpw(password, salt)
 
     p = PostgreSQL(database='mattermost')
-    p.execute('UPDATE users SET password=\'%s\' WHERE username=\'admin\';' % hashpass)
+    p.execute('UPDATE users SET password=\'%s\', email=\'%s\' WHERE username=\'admin\';' % (hashpass, email))
 
 if __name__ == "__main__":
     main()
